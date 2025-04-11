@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Love Story</title>
+  <style>
+   body {
+     font-family: 'Arial', sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f5f5f5;
+     color: #0a0909;
+     scroll-behavior: smooth;
+     background-image: url('image.png');
+     background-size: cover;
+     background-position: center center;
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+   }
+
+    section {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: justify; padding: 30px 10px;
+      box-sizing: border-box;
+      position: relative;
+      margin: 20px auto;
+      max-width:900px;
+      background-color: rgb(252, 248, 248);
+      border-radius: 20px;
+      box-shadow: 0 20 30px rgba(0, 0, 0, 0.1);
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Special styling for the surprise section to keep it full-width */
+    #surprise {
+      max-width: 110%;
+      border-radius: 0;
+      margin: 2%;
+      background-color: transparent;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #f55050;
+      margin-bottom: 1px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #ff4d4d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+      max-width: 50%;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d4d;
+      font-size: 2rem;
+      animation: float 5s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+
+    /* Countdown Timer Styles */
+    .countdown-timer {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(255, 77, 77, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .countdown-timer h3 {
+      margin: 0 0 10px 0;
+      font-size: small
+    }
+
+    .countdown-timer .time {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .countdown-timer .time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-timer .time-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .countdown-timer .time-label {
+      font-size: 0.8rem;
+    }
+
+    /* Special styling for surprise section */
+    #surprise {
+      min-height: 100vh;
+      padding: 0px 5px;
+      box-sizing: border-box;
+      position: relative;
+      margin: 0 auto;
+      width: 90%;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      /* Align all text to left */
+      display: block;
+      /* Change from flex to block for natural flow */
+    }
+
+    /* Heading styling - top left */
+    #surprise h1 {
+      font-size: 3.0rem;
+      color: #ff4d4d;
+      margin: 0 0 30px 0;
+      /* Top Right Bottom Left */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      position: relative;
+      text-align: left;
+      /* Explicit left align */
+      padding-top: 50px;
+      /* Space from top */
+      padding-left: 20px;
+      /* Space from left */
+    }
+
+    /* Paragraph styling - flows naturally below h1 */
+    #surprise p {
+      font-size: 25px;
+      max-width: 300px;
+      margin: 0 0 0 40px;
+      /* Top Right Bottom Left */
+      padding: 0 20px 0 0;
+      /* Top Right Bottom Left */
+      line-height: 1.0;
+      text-align: left;
+      position: relative;
+    }
+
+    /* Hearts positioning adjustment */
+    #surprise .heart {
+      position: absolute;
+      color: #ff4d4d;
+      font-size: 1rem;
+      animation: float 5s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    /* Date styling for sections */
+    .section-date {
+      position: absolute;
+      top: 05px;
+      left: 10px;
+      font-size: 1.0rem;
+      color: #ff4d4d;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px 5px;
+      border-radius: 20px;
+      border: 1px solid #ff4d4d;
+      z-index: 10;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Special positioning for surprise section date */
+    #surprise .section-date {
+      top: 10px;
+      left: 20px;
+      font-size: 1.1rem;
+      background-color: rgba(255, 77, 77, 0.15);
+    }
+
+    /* Animation for date (optional) */
+    .section-date {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Different color for anniversary dates */
+    .section-date.anniversary {
+      background-color: rgba(255, 77, 77, 0.2);
+      color: #d42a2a;
+      border: 1px dashed #d42a2a;
+    }
+  </style>
+</head>
+<body>
+  <!-- Countdown Timer -->
+  <div class="countdown-timer">
+    <h3>MY LOVE BIRTHDAY</h3>
+    <div class="time">
+      <div class="time-unit">
+        <span class="time-value" id="days">00</span>
+        <span class="time-label">Days</span>
+      </div>
+      <div class="time-unit">
+        <span class="time-value" id="hours">00</span>
+        <span class="time-label">Hours</span>
+      </div>
+      <div class="time-unit">
+        <span class="time-value" id="minutes">00</span>
+        <span class="time-label">Mins</span>
+      </div>
+      <div class="time-unit">
+        <span class="time-value" id="seconds">00</span>
+        <span class="time-label">Secs</span>
+      </div>
+    </div>
+  </div>
+  <!-- First Meet Section -->
+  <!-- Continue for all other sections -->
+
+  <!-- Small Surprise Section -->
+  <section id="surprise">
+    <div class="section-date">March 27th 2024</div>
+    <div class="heart" style="top: 10%; left: 20%;"></div>
+    <div class="heart" style="top: 30%; left: 80%;"></div>
+    <div class="heart" style="top: 70%; left: 50%;"></div>
+    <h1>A Small Surprise for You</h1>
+    <p>Hey love, I made something special for you. Scroll down to relive our beautiful journey together. ❤️</p>
+  </section>
+
+  <!-- Our Love Story Section -->
+  <section id="love-story">
+    <div class="heart" style="top: 20%; left: 10%;"></div>
+    <div class="heart" style="top: 50%; left: 90%;"></div>
+    <h1>Our Love Story</h1>
+  <br>
+    <p>Every moment with you is a treasure.i'm so lucky to have you in my life.</p>
+  </section>
+
+  <!-- First Meet Section -->
+  <section id="first-meet">
+    <div class="section-date"> </div>
+    <div class="heart" style="top: 10%; left: 70%;"></div>
+    <div class="heart" style="top: 80%; left: 30%;"></div>
+    <h2>First Meet</h2>
+    <p>It was a sunny afternoon when I first saw you. on that time i got nervous but after looked into our eyes flet like mesmarized.
+    </p>
+    <img src="meet.jpg" alt="First Meet">
+  </section>
+
+  <!-- First Call Section -->
+  <section id="first-call">
+    <div class="heart" style="top: 40%; left: 20%;"></div>
+    <div class="heart" style="top: 60%; left: 80%;"></div>
+    <h2>First Call</h2>
+    <p>I was so nervous before calling you, but hearing your voice made everything perfect.</p>
+    <img src="call.jpg" >
+  </section>
+
+  <!-- First Video Call Section -->
+  <section id="first-vc">
+    <div class="heart" style="top: 10%; left: 50%;"></div>
+    <div class="heart" style="top: 70%; left: 10%;"></div>
+    <h2>First Video Call</h2>
+    <p>I couldn't stop smiling when I finally saw your face. You were even more beautiful than I imagined.</p>
+    <img src="vc.jpg">
+  </section>
+
+  <!-- First Hug Section -->
+  <section id="first-hug">
+    <div class="heart" style="top: 20%; left: 80%;"></div>
+    <div class="heart" style="top: 60%; left: 40%;"></div>
+    <h2>First Hug</h2>
+    <p>That first hug felt like home. I never wanted to let you go.</p>
+    <img src="hug.jpg" alt="First Hug">
+  </section>
+
+  <!-- First Ride Section -->
+  <section id="first-ride">
+    <div class="heart" style="top: 10%; left: 30%;"></div>
+    <div class="heart" style="top: 70%; left: 90%;"></div>
+    <h2>First Ride</h2>
+    <p>Riding with you by my side was the best feeling. I knew I wanted to go on many more adventures with you.</p>
+    <img src="Bike ride.jpg" alt="First Ride">
+  </section>
+
+  <!-- Love Proposal Section -->
+  <section id="love-proposal">
+    <div class="heart" style="top: 40%; left: 60%;"></div>
+    <div class="heart" style="top: 80%; left: 20%;"></div>
+    <h2>Love Proposal</h2>
+    <p>I'll never forget the moment I told you I love you. You're my everything.</p>
+ <video src="ring.mp4"controls>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video">
+    <div class="heart" style="top: 20%; left: 50%;"></div>
+    <div class="heart" style="top: 60%; left: 30%;"></div>
+    <h2>Our Forever</h2>
+    <p>Here's to a lifetime of love and happiness together.</p>
+    <video controls>
+      <source src="our love journey.mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+  <!-- Add this at the bottom of your HTML, just before the closing </body> tag -->
+  <audio id="bgMusic" autoplay >
+    <source src="Kannil Kanavaaga Nee Song-mobcupe.com.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- JavaScript for Tap-to-Generate Love Symbols -->
+  <script>
+    document.addEventListener('click', (event) => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = `${event.clientX}px`;
+      heart.style.top = `${event.clientY}px`;
+      document.body.appendChild(heart);
+
+      // Remove the heart after the animation ends
+      setTimeout(() => {
+        heart.remove();
+      }, 1000); // Matches the animation duration
+    });
+
+    // Countdown Timer Script
+    function updateCountdown() {
+      const now = new Date();
+      let year = now.getFullYear();
+
+      // Check if March 27 has already passed this year
+      const march27ThisYear = new Date(year, 2, 27); // Month is 0-indexed (2 = March)
+      if (now > march27ThisYear) {
+        // If yes, set target to March 27 of next year
+        year++;
+      }
+
+      const targetDate = new Date(year, 2, 27);
+      const timeRemaining = targetDate - now;
+
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // Update the countdown every second
+    updateCountdown(); // Initial call
+    setInterval(updateCountdown, 1000);
+    // This will ensure music plays after user interaction (required by many browsers)
+    document.addEventListener('DOMContentLoaded', function () {
+      let audio = document.getElementById('bgMusic');
+      let played = false;
+
+      // Play music on any user interaction
+      function playMusic() {
+        if (!played) {
+          audio.play().catch(e => console.log("Auto-play prevented:", e));
+          played = true;
+          document.removeEventListener('click', playMusic);
+        }
+      }
+
+      document.addEventListener('click', playMusic);
+      document.addEventListener('touchstart', playMusic);
+      document.addEventListener('keydown', playMusic);
+    });
+</script>
+
+  </script>
+</body>
+
+</html>
