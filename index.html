@@ -354,10 +354,10 @@
 </video>
   </section>
   <!-- Add this at the bottom of your HTML, just before the closing </body> tag -->
-  <audio id="bgMusic" autoplay >
-    <source src="Kannil Kanavaaga Nee Song-mobcupe.com.mp3>
-    Your browser does not support the audio element.
-  </audio>
+ <audio id="bgMusic" controls autoplay loop>
+  <source src="Kannil Kanavaaga Nee Song-mobcupe.com.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
   <!-- JavaScript for Tap-to-Generate Love Symbols -->
   <script>
@@ -410,7 +410,8 @@
       let played = false;
 
       // Play music on any user interaction
-      function playMusic() {
+      function playMusic() //
+{
         if (!played) {
           audio.play().catch(e => console.log("Auto-play prevented:", e));
           played = true;
